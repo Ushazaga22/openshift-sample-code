@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+spec:
+  replicas: {{ .Values.app.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app.image }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.image }}
+    spec:
+      containers:
+        - name: {{ .Values.container.name }}
+          image: {{ .Values.app.image.repository }}# Replace with your Docker image name
+          ports:
+            - containerPort: {{ .Values.container.port }}

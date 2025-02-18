@@ -1,0 +1,21 @@
+# values.yaml
+
+# General application settings
+app:
+  name: simple-calculator-api
+  replicaCount: 1
+  image:
+    repository: "quay.io/ushazaga22/op"
+    tag: "v1"
+    pullPolicy: "IfNotPresent"
+
+# Container settings
+container:
+  name: simple-calculator-api
+  port: 8080
+
+# Kubernetes service settings
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
